@@ -24,18 +24,22 @@
 //imports the database
 include_once 'databasehandler.php';
 
+    //calling search terms of the form
     $SearchTerm1 = $_POST['searchTerm1'];
     $SearchTerm2 = $_POST['searchTerm2'];
 
+    //SQL statement selecting all of the relevant columns
     $sql = "SELECT PersonTitle, PersonFirstName, PersonSurname, PersonMobile, PersonEmail, HomeAdd1, HomeAdd2, HomeAddTown, 
         HomeAddCountyorCity, Homeaddeircode, ShipAdd1, ShipAdd2, ShipAddTown, ShipAddCountyorCity, ShipAddEircode 
         FROM PeopleDetails, HomeAddress, ShipAddress
         Where PeopleDetails.PersonID = HomeAddress.ForeignID AND PeopleDetails.PersonID = ShipAddress.ForeignSID
         AND PersonFirstName = '$SearchTerm1' AND PersonSurname = '$SearchTerm2';";
 
+    //query sql database and check for number of rows. 
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
 
+    //generates table of results
     if($resultCheck > 0){
         echo "<table>";
                 echo "<tr>";
@@ -86,7 +90,7 @@ include_once 'databasehandler.php';
         echo "No records matching query were found.";
     }
 ?>
-
+<!--button to allow user to navigate back to the main page-->
 <a href="/Assignment-04a/#!/retrieve" target="_blank">Return to Search Form</a>
 
 </body>

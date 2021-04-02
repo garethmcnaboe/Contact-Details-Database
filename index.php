@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- import angular in order to facilitate the routing -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 
@@ -12,7 +13,7 @@
 <h1>Contact Details Database - Assignment 4</h1>
 
 <div class="nav">
-
+<!--list of links that can be used to navigate to the features-->
     <ul>
     <li><a href="#/!">Home</a></li>
     <li><a href="#!create">Create New Entry</a></li>

@@ -2,6 +2,7 @@
 //imports the database
 include_once 'databasehandler.php';
 
+//if else statements to decide whether to use one of the set titles or one specified by the user
 $value1 = $_POST['selectTitle'];
 if($value1 == "0" || $value1 == 0){
 $title = $_POST['otherTitle'];
@@ -9,6 +10,8 @@ $title = $_POST['otherTitle'];
 else{
 $title = $_POST['selectTitle'];
 }
+
+//calling other inputs from the form.
 $personFirstName = $_POST['personFirstName'];
 $personSurname = $_POST['personSurname'];
 $personMobile = $_POST['personMobile'];
@@ -20,6 +23,8 @@ $homeAddressTown = $_POST['homeAddressTown'];
 $homeAddressCountyorCity = $_POST['homeAddressCountyorCity'];
 $homeAddressEircode = $_POST['homeAddressEircode'];
 
+
+//if else statement to decide whether to reuse the home address for deliveries
 if(isset($_POST['checkbox'])){
     $shipAddress1 = $_POST['homeAddress1'];
     $shipAddress2 = $_POST['homeAddress2'];
@@ -35,6 +40,8 @@ else{
     $shipAddressEircode = $_POST['shipAddressEircode']; 
 }
 
+
+//3 sql statements to update each of the three sql tables
 $sql = "insert into PeopleDetails (PersonTitle, PersonFirstName, PersonSurname, PersonMobile, PersonEmail)
 values('$title', '$personFirstName' , '$personSurname', '$personMobile', '$personEmail');";
 mysqli_query($conn, $sql);
